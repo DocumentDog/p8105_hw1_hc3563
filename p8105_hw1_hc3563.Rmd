@@ -2,7 +2,7 @@
 title: "p8105_hw1_hc3563"
 author: "Hanchuan Chen"
 date: "2024-09-16"
-output: html_document
+output: github_document
 ---
 
 ```{r setup, include=FALSE}
