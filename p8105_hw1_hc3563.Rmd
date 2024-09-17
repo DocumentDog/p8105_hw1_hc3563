@@ -26,6 +26,42 @@ ggplot(penguins, aes(x=bill_length_mm, y=flipper_length_mm, color=species)) + ge
 ggsave("scatterplot.png")
 ```
 
+### Problem 2
+Now we will create a dataframe that contains:
+
+* random sample of size 10 from a standard Normal distribution
+
+* a logical vector indicating whether elements of the sample are greater than 0
+
+* a character vector of length 10
+
+* a factor vector of length 10, with 3 different factor “levels”
+```{r dataframe}
+set.seed(42)
+df = tibble(
+  vec_num = rnorm(10, sd=1),
+  vec_logic = vec_num > 0,
+  vec_char = c("My", "name", 'is', 'Hanchuan', 'Chen', 'and', 'my', 'UNI', 'is', 'hc3563'),
+  vec_factor = c('high','low','low','medium','medium','low','high','medium','low','high')
+)
+
+show(df)
+```
+And the mean for numeric variable is `r mean(df %>% pull(vec_num))`; mean for logical variable is `r mean(df %>% pull(vec_logic))`; mean for character variable is `r mean(df %>% pull(vec_char))`; and the mean for factor variable is `r mean(df %>% pull(vec_factor))`. As a result, numeric and logical variables can calculate the mean while character and factor variables cannot.
+
+Next, I am going to write a code chunk that converting variable type.
+```{r convert_num, eval=FALSE}
+logic_to_num = as.numeric(df$vec_logic)
+print(logic_to_num)
+
+char_to_num = as.numeric(df$vec_char)
+print(char_to_num)
+
+factor_to_num = as.numeric(df$vec_factor)
+print(factor_to_num)
+```
+From the result, we will see that logical variable can be converted to numeric type, while character and factor variables cannot be converted to numeric type. That is because logical values are inherently represented that TRUE = 1 and FALSE = 0. However, convert strings and factors to numeric seems not make sense so they will return NA instead. As a result, when calculating mean for each variables, only numeric and logical variables can be calculated while other two variables cannot.
+
 
 
 
