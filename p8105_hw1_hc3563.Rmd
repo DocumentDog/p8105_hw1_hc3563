@@ -4,6 +4,7 @@ author: "Hanchuan Chen"
 date: "2024-09-16"
 output: github_document
 ---
+Let's first load the necessary package:
 ```{r message=FALSE}
 library(tidyverse)
 ```
